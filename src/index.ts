@@ -18,7 +18,7 @@ export const app = new Hono<{ Bindings: Bindings }>({
     prettyJSON(),
     logger(),
     cors({
-      origin: '*',
+  origin: '*',
       credentials: true,
       allowHeaders: [
         'X-CSRF-Token',

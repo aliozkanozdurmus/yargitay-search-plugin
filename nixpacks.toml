@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ['bun', 'nodejs', 'python3', 'gcc', 'make']
+nixPkgs = ['bun', 'nodejs', 'python3', 'gcc', 'make', 'chromium', 'nss', 'atk', 'at-spi2-atk', 'cups', 'libdrm', 'libxkbcommon', 'libxcomposite', 'libxdamage', 'libxrandr', 'libgbm', 'pango']
 
 [phases.install]
 cmds = ['bun install']
