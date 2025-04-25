@@ -2,11 +2,11 @@
   "$schema": "../node_modules/@lobehub/chat-plugin-sdk/schema.json",
   "version": "1",
   "identifier": "yargitaysearch",
-  "gateway": "http://localhost:3000/api/gateway",
+  "gateway": "https://hukusis-kararplugin.invenire.tr/api/gateway",
   "api": [
     {
       "name": "yargitaySearch",
-      "url": "http://localhost:3000/api/yargitay-search",
+      "url": "https://hukusis-kararplugin.invenire.tr/api/yargitay-search",
       "description": "Yargıtay'ın 15 milyondan fazla emsal kararı içerisinde gelişmiş arama yapmanızı sağlar. Hukusis tarafından geliştirilen bu eklenti, hukuki araştırmalarınızda size yardımcı olacak güçlü bir araçtır. Daire, esas, karar numarası ve tarih bazlı filtreleme özellikleriyle birlikte tam metin araması yapabilir, kararların detaylı içeriklerine erişebilirsiniz.",
       "parameters": {
         "type": "object",
