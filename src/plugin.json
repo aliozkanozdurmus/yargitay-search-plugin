@@ -1,0 +1,22 @@
+{
+  "name": "yargitay-search",
+  "version": "1.0.0",
+  "description": "Yargıtay Karar Arama Sistemi için LobeChat eklentisi",
+  "api": [
+    {
+      "name": "yargitaySearch",
+      "url": "/api/yargitay-search",
+      "description": "Yargıtay kararlarında arama yapar",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Aranacak terim (örn: komşuluk hukuku, tazminat, vb.)"
+          }
+        },
+        "required": ["query"]
+      }
+    }
+  ]
+} 

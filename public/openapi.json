@@ -1,0 +1,79 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Yargıtay Karar Arama API",
+    "description": "Yargıtay kararlarında arama yapmanızı sağlar",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "paths": {
+    "/api/yargitay-search": {
+      "post": {
+        "description": "Yargıtay kararlarında arama yapar",
+        "operationId": "searchYargitayDecisions",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "query": {
+                    "type": "string",
+                    "description": "Aranacak terim"
+                  }
+                },
+                "required": ["query"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Başarılı arama sonucu",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "siraNo": {
+                            "type": "number"
+                          },
+                          "kararNo": {
+                            "type": "string"
+                          },
+                          "kararMetni": {
+                            "type": "string"
+                          },
+                          "tarih": {
+                            "type": "string"
+                          },
+                          "davaTuru": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+} 

@@ -1,0 +1,21 @@
+{
+  "name": "yargitay-search-plugin",
+  "private": true,
+  "scripts": {
+    "dev": "NODE_ENV=development bun run --hot src/index.ts",
+    "start": "bun run src/index.ts",
+    "build": "echo 'Skip build'",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@lobehub/chat-plugin-sdk": "^1.32.4",
+    "@lobehub/chat-plugins-gateway": "^1.9.0",
+    "hono": "^4.6.16",
+    "puppeteer": "^22.4.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "bun-types": "^1.0.25",
+    "typescript": "^5.4.2"
+  }
+}
