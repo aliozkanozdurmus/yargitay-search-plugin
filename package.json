@@ -11,7 +11,9 @@
     "@lobehub/chat-plugin-sdk": "^1.32.4",
     "@lobehub/chat-plugins-gateway": "^1.9.0",
     "hono": "^4.6.16",
-    "puppeteer": "^22.4.1"
+    "puppeteer": "^22.4.1",
+    "cheerio": "^1.0.0-rc.12",
+    "node-fetch": "^3.3.2"
   },
   "devDependencies": {
     "@types/node": "^22.10.5",

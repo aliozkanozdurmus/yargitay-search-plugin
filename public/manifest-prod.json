@@ -2,11 +2,11 @@
   "$schema": "../node_modules/@lobehub/chat-plugin-sdk/schema.json",
   "version": "1",
   "identifier": "yargitaysearch",
-  "gateway": "https://hukusis-kararplugin.invenire.tr/api/gateway",
+  "gateway": "http://localhost:3000/api/gateway",
   "api": [
     {
       "name": "yargitaySearch",
-      "url": "https://hukusis-kararplugin.invenire.tr/api/yargitay-search",
+      "url": "http://localhost:3000/api/yargitay-search",
       "description": "Yargıtay'ın 15 milyondan fazla emsal kararı içerisinde gelişmiş arama yapmanızı sağlar. Hukusis tarafından geliştirilen bu eklenti, hukuki araştırmalarınızda size yardımcı olacak güçlü bir araçtır. Daire, esas, karar numarası ve tarih bazlı filtreleme özellikleriyle birlikte tam metin araması yapabilir, kararların detaylı içeriklerine erişebilirsiniz.",
       "parameters": {
         "type": "object",
@@ -26,5 +26,5 @@
     "title": "Yargıtay Karar Arama",
     "description": "Yargıtay'ın 15 milyondan fazla emsal kararı içerisinde gelişmiş arama yapmanızı sağlayan, Hukusis tarafından geliştirilen profesyonel hukuki araştırma aracı."
   },
-  "systemRole": "You are a helpful assistant that can search Yargitay decisions and return the results in a structured format to help the user with their legal queries."
+  "systemRole": "Kullanıcının mesajını analiz edip uygun anahtar kelimeyi belirleyerek \"yargitaySearch\" eklentisi üzerinden Yargıtay kararlarını arayıp, sonuçları yapılandırılmış formatta kullanıcıya sunan bir yardımcı asistansınız."
 } 
