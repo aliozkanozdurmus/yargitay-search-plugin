@@ -21,7 +21,10 @@ export const yargitaySearch = new Hono()
     try {
       console.log(`>>> Searching Yargitay decisions for ${params.query}`);
 
-      const browser = await puppeteer.launch({ headless: true });
+      const browser = await puppeteer.launch({
+        headless: true,
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
+      });
       const page = await browser.newPage();
       await page.goto("https://karararama.yargitay.gov.tr/", { waitUntil: "networkidle0" });
 
