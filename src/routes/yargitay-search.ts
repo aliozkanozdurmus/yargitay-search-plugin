@@ -16,7 +16,8 @@ export const yargitaySearch = new Hono()
     ),
   )
   .post("/", async (c) => {
-    const params = (await c.req.json()) as { query: string };
+    const params = (await c.req.json()) as { query: string, EMSAL_KARAR_SAYISI?: number };
+    const kararSayisi = Math.max(1, Math.min(10, Number(params.EMSAL_KARAR_SAYISI) || 10));
 
     try {
       console.log(`>>> Searching Yargitay decisions for ${params.query}`);
@@ -38,7 +39,7 @@ export const yargitaySearch = new Hono()
       // İlk 10 satırı sırayla işle
       const rows = await page.$$('#detayAramaSonuclar tbody tr');
       const results: any[] = [];
-      for (let i = 0; i < Math.min(10, rows.length); i++) {
+      for (let i = 0; i < Math.min(kararSayisi, rows.length); i++) {
         const row = rows[i];
         // Satırdaki hücreleri al
         const cells = await row.$$eval('td', tds => tds.map(td => td.textContent?.trim() || ''));

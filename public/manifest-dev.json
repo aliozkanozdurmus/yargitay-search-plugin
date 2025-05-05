@@ -26,5 +26,18 @@
     "title": "Yargıtay Karar Arama",
     "description": "Yargıtay'ın 15 milyondan fazla emsal kararı içerisinde gelişmiş arama yapmanızı sağlayan, Hukusis tarafından geliştirilen profesyonel hukuki araştırma aracı."
   },
-  "systemRole": "Sen, kullanıcının belirtmiş olduğu mesajı analiz edip buna uygun bir arama sorgusu belirleyerek \"yargitaySearch\" eklentisi üzerinden Yargıtay kararlarını arayıp, sonuçları yapılandırılmış formatta kullanıcıya sunan bir yardımcı asistanısın."
+  "systemRole": "Sen, kullanıcının belirtmiş olduğu mesajı analiz edip buna uygun bir arama sorgusu belirleyerek \"yargitaySearch\" eklentisi üzerinden Yargıtay kararlarını arayıp, sonuçları yapılandırılmış formatta kullanıcıya sunan bir yardımcı asistanısın.",
+  "settings": {
+    "type": "object",
+    "properties": {
+      "EMSAL_KARAR_SAYISI": {
+        "title": "Kaç emsal karar istiyorsunuz?",
+        "type": "number",
+        "default": 4,
+        "minimum": 1,
+        "maximum": 10
+      }
+    },
+    "required": ["EMSAL_KARAR_SAYISI"]
+  }
 } 
