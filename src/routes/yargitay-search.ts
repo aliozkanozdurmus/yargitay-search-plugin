@@ -42,11 +42,29 @@ export const yargitaySearch = new Hono()
         const row = rows[i];
         // Satırdaki hücreleri al
         const cells = await row.$$eval('td', tds => tds.map(td => td.textContent?.trim() || ''));
+        // Tıklamadan önce mevcut içeriği al
+        let prevContent = '';
+        try {
+          prevContent = await page.$eval('.card-scroll', el => el.textContent?.trim() || '');
+        } catch (e) {
+          // İlk başta içerik yoksa hata olabilir, sorun değil
+        }
         // Satıra tıkla
         await row.click();
-        // Sağdaki içeriğin gelmesini bekle
-        await page.waitForSelector('.card-scroll', { timeout: 5000 });
-        // İçeriği al
+        // İçeriğin değişmesini bekle (max 7sn)
+        try {
+          await page.waitForFunction(
+            (oldContent) => {
+              const el = document.querySelector('.card-scroll');
+              return el && el.textContent && el.textContent.trim() !== oldContent;
+            },
+            { timeout: 7000 },
+            prevContent
+          );
+        } catch (e) {
+          // İçerik değişmezse devam et
+        }
+        // Yeni içeriği al
         const content = await page.$eval('.card-scroll', el => el.textContent?.trim() || '');
         results.push({
           siraNo: cells[0],
