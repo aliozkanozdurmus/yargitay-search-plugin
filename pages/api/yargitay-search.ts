@@ -35,9 +35,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // Sonuçların yüklenmesini bekle
     await page.waitForSelector('#detayAramaSonuclar tbody tr', { timeout: 10000 });
 
-    // İlk 10 kararın bilgilerini topla
+    // İlk 7 kararın bilgilerini topla
     const decisions = await page.evaluate(() => {
-      const rows = Array.from(document.querySelectorAll('#detayAramaSonuclar tbody tr')).slice(0, 10);
+      const rows = Array.from(document.querySelectorAll('#detayAramaSonuclar tbody tr')).slice(0, 7);
       return rows.map(row => {
         const cells = row.querySelectorAll('td');
         return {
