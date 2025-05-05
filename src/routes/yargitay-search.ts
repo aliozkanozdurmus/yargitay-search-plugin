@@ -51,18 +51,32 @@ export const yargitaySearch = new Hono()
         }
         // Satıra tıkla
         await row.click();
-        // İçeriğin değişmesini bekle (max 7sn)
+        // İçeriğin değişmesini bekle (max 12sn)
         try {
           await page.waitForFunction(
             (oldContent) => {
               const el = document.querySelector('.card-scroll');
               return el && el.textContent && el.textContent.trim() !== oldContent;
             },
-            { timeout: 7000 },
+            { timeout: 12000 },
             prevContent
           );
         } catch (e) {
           // İçerik değişmezse devam et
+        }
+        // İçeriğin tamamen yüklendiğinden emin ol (uzunluk sabitlenene kadar bekle)
+        let lastLength = 0;
+        let stableCount = 0;
+        for (let j = 0; j < 20; j++) { // max 2sn bekle
+          const contentCheck = await page.$eval('.card-scroll', el => el.textContent?.trim() || '');
+          if (contentCheck.length === lastLength) {
+            stableCount++;
+            if (stableCount >= 3) break; // 3 kez üst üste aynıysa tamam
+          } else {
+            stableCount = 0;
+            lastLength = contentCheck.length;
+          }
+          await new Promise(res => setTimeout(res, 100)); // 100ms bekle
         }
         // Yeni içeriği al
         const content = await page.$eval('.card-scroll', el => el.textContent?.trim() || '');
